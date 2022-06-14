@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Header";
 import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
 import Login from "./modules/login/Login";
@@ -41,6 +42,7 @@ const App = () => {
     <div className="app">
       <Provider store={store}>
         <Theme.Provider value={{ current: theme, update: setTheme }}>
+          <Header />
           <Router>
             <Switch>
               <Route path="/" exact>

@@ -28,7 +28,6 @@ const Login = () => {
 
     return (
         <div className={loginCssClass}>
-            <ThemeToggle />
             <form className="login_form" onSubmit={onSubmit}>
                 <input id="username" type="text" className="login_form_input" placeholder="Usuario" value={formState.username} onChange={onChange("username")} />
                 <input id="password" type="password" className="login_form_input" placeholder="Contraseña" value={formState.password} onChange={onChange("password")} />
