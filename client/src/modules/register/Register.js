@@ -26,16 +26,16 @@ const Register = () => {
         <div className="register">
             <form className="register_form" onSubmit={onSubmit}>
                 <h3>Regístrese en la aplicación</h3>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><BsFillPersonPlusFill /></span>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><BsFillPersonPlusFill /></span>
                     <input id="username" type="text" className="form-control" placeholder="Usuario" value={formState.username} onChange={onChange("username")} />
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><BsFillKeyFill /></span>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><BsFillKeyFill /></span>
                     <input id="password" type="password" className="form-control" placeholder="Contraseña" value={formState.password} onChange={onChange("password")} />
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><BsKey /></span>
+                <div className="input-group mb-3">
+                    <span className="input-group-text" id="basic-addon1"><BsKey /></span>
                     <input id="password" type="password" className="form-control" placeholder="Repita contraseña" value={formState.password} />
                 </div>
                 <button className="btn btn-primary login_button">Registrarse</button>

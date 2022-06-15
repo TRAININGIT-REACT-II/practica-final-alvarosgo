@@ -7,6 +7,7 @@ import Theme from "./contexts/theme";
 import Login from "./modules/login/Login";
 import NotesView from "./modules/notesView/NotesView";
 import Register from "./modules/register/Register";
+import PrivateRoute from "./components/PrivateRoute";
 import configureAppStore from "./redux/store";
 
 // Componente principal de la aplicación.
@@ -52,9 +53,9 @@ const App = () => {
               <Route path="/register">
                 <Register />
               </Route>
-              <Route path="/notes">
+              <PrivateRoute path="/notes">
                 <NotesView />
-              </Route>
+              </PrivateRoute>
               <Route path="*">
                 <div>Ruta no encontrada</div>
                 <a href="/">Volver a home</a>

@@ -4,7 +4,7 @@ const NotesView = () => {
 
     return (
         <div>
-            <button type="button" class="btn btn-outline-primary">Crear nueva nota</button>
+            <button type="button" className="btn btn-outline-primary">Crear nueva nota</button>
             <div className="card cardNote">
                 <div className="card-body">
                     <h5 className="card-title">Título</h5>
