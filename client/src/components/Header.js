@@ -4,11 +4,16 @@ import './header.css';
 const Header = () => {
 
     return (
-        <div className="header">
-            <h1>QN - QUALITY NOTES</h1>
-            <p>Usuario</p>
-            <a href="/register">Cerrar sesión</a>
-            <ThemeToggle />
+        <div>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">QN - QUALITY NOTES</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <ThemeToggle />
+                </div>
+            </nav>
         </div>
     )
 

@@ -4,13 +4,14 @@ import { THEMES } from '../../constants/themes';
 import Theme from '../../contexts/theme';
 import { login } from './actions';
 import { useDispatch } from "react-redux";
+import { BsFillKeyFill, BsFillPersonFill } from "react-icons/bs";
 import './login.css';
 
 const Login = () => {
 
+    const [formState, setFormState] = useState({ username: "", password: "" });
     const theme = useContext(Theme);
     const dispatch = useDispatch();
-    const [formState, setFormState] = useState({ username: "", password: "" });
 
     const loginCssClass = theme.current === THEMES.light ? "login" : "login login_dark";
 
@@ -29,11 +30,16 @@ const Login = () => {
     return (
         <div className={loginCssClass}>
             <form className="login_form" onSubmit={onSubmit}>
-                <input id="username" type="text" className="login_form_input" placeholder="Usuario" value={formState.username} onChange={onChange("username")} />
-                <input id="password" type="password" className="login_form_input" placeholder="Contraseña" value={formState.password} onChange={onChange("password")} />
-                <button className="login_form_button">Iniciar sesión</button>
-                <p>¿Todavía no estás registrado?</p>
-                <a href="/register">Regístrate</a>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><BsFillPersonFill /></span>
+                    <input id="username" type="text" className="form-control" placeholder="Usuario" value={formState.username} onChange={onChange("username")} />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><BsFillKeyFill></BsFillKeyFill></span>
+                    <input id="password" type="password" className="form-control" placeholder="Contraseña" value={formState.password} onChange={onChange("password")} />
+                </div>
+                <button className="btn btn-primary login_button">Iniciar sesión</button>
+                <p>¿Todavía no estás registrado? <a href="/register">Regístrate aquí</a> </p>
             </form>
         </div>
     );

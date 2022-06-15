@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
 import Login from "./modules/login/Login";
+import NotesView from "./modules/notesView/NotesView";
 import Register from "./modules/register/Register";
 import configureAppStore from "./redux/store";
 
@@ -50,6 +51,9 @@ const App = () => {
               </Route>
               <Route path="/register">
                 <Register />
+              </Route>
+              <Route path="/notes">
+                <NotesView />
               </Route>
               <Route path="*">
                 <div>Ruta no encontrada</div>

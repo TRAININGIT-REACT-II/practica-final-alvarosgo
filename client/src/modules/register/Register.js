@@ -1,12 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from "react-redux";
 import { register } from './actions';
+import { BsFillKeyFill, BsFillPersonPlusFill, BsKey } from "react-icons/bs";
 import './register.css';
 
 const Register = () => {
 
-    const dispatch = useDispatch();
     const [formState, setFormState] = useState({ username: "", password: "" });
+
+    const dispatch = useDispatch();
 
     const onChange = (key) => {
         return (e) => setFormState({
@@ -23,10 +25,20 @@ const Register = () => {
     return (
         <div className="register">
             <form className="register_form" onSubmit={onSubmit}>
-                <h1>Regístrese en la aplicación</h1>
-                <input id="username" type="text" className="register_form_input" placeholder="Usuario" value={formState.username} onChange={onChange("username")} />
-                <input id="password" type="password" className="register_form_input" placeholder="Contraseña" value={formState.password} onChange={onChange("password")} />
-                <button className="register_form_button">Registrar</button>
+                <h3>Regístrese en la aplicación</h3>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><BsFillPersonPlusFill /></span>
+                    <input id="username" type="text" className="form-control" placeholder="Usuario" value={formState.username} onChange={onChange("username")} />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><BsFillKeyFill /></span>
+                    <input id="password" type="password" className="form-control" placeholder="Contraseña" value={formState.password} onChange={onChange("password")} />
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><BsKey /></span>
+                    <input id="password" type="password" className="form-control" placeholder="Repita contraseña" value={formState.password} />
+                </div>
+                <button className="btn btn-primary login_button">Registrarse</button>
             </form>
         </div>
     );
