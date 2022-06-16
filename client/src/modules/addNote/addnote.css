@@ -1,0 +1,17 @@
+.add_note_general {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+
+.add_note {
+    background-color: black;
+    width: 30%;
+    padding: 2%;
+}
+
+.add_note_button {
+    margin-top: 2%;
+}

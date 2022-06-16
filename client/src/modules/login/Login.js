@@ -16,7 +16,7 @@ const Login = () => {
     const [formState, setFormState] = useState({ username: "", password: "" });
 
     const theme = useContext(Theme);
-    const user = useContext(User);
+    const { signedIn, updateUser } = useContext(User);
 
     const dispatch = useDispatch();
 
@@ -33,7 +33,9 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        user.updateUser(true)
+        updateUser(true)
+        console.log('EN EL SUBMIT')
+        console.log(signedIn)
         dispatch(login(formState))
     }
 

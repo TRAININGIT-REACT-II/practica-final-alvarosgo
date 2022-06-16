@@ -1,0 +1,26 @@
+.detail_note_general {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.detail_note {
+    background-color: black;
+    width: 30%;
+    padding: 2%;
+}
+
+.detail_note_button {
+    margin-top: 15%;
+}
+
+.detail_title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.detail_content {
+    height: 150%;
+}

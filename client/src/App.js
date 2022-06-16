@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
@@ -9,11 +9,18 @@ import NotesView from "./modules/notesView/NotesView";
 import Register from "./modules/register/Register";
 import PrivateRoute from "./components/PrivateRoute";
 import configureAppStore from "./redux/store";
+import User from "./contexts/user";
+import AddNotes from "./modules/addNote/addNote";
+import DetailNote from "./modules/detailNote/DetailNote";
 
 // Componente principal de la aplicación.
 const App = () => {
   const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const { signedIn } = useContext(User);
+
+  console.log(signedIn)
 
   // Estado del tema 
   const [theme, setTheme] = useState(THEMES.light)
@@ -48,13 +55,26 @@ const App = () => {
           <Router>
             <Switch>
               <Route path="/" exact>
-                <Login />
+                {!signedIn && <Login />}
+                {signedIn && (
+                  <Redirect
+                    to={{
+                      pathname: '/notes',
+                    }}
+                  />
+                )}
               </Route>
               <Route path="/register">
                 <Register />
               </Route>
               <PrivateRoute path="/notes">
                 <NotesView />
+              </PrivateRoute>
+              <PrivateRoute path="/add-note">
+                <AddNotes />
+              </PrivateRoute>
+              <PrivateRoute path="/detail-note">
+                <DetailNote />
               </PrivateRoute>
               <Route path="*">
                 <div>Ruta no encontrada</div>
