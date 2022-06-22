@@ -4,13 +4,13 @@ import User from "../contexts/user";
 
 const PrivateRoute = ({ children, ...others }) => {
 
-    const { signedIn } = useContext(User);
+    // const { signedIn } = useContext(User);
 
     return (
         <Route
             {...others}
             render={() =>
-                //signedIn ? ( HASTA QUE LO HAGAMOS CON EL API
+                //signedIn ? ( HASTA QUE LO HAGAMOS CON EL API )
                 true ? (
                     children
                 ) : (

@@ -18,7 +18,7 @@ const App = () => {
   const [status, setStatus] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const { signedIn } = useContext(User);
+  const [signedIn, setUser] = useState(false);
 
   console.log(signedIn)
 
@@ -51,37 +51,39 @@ const App = () => {
     <div className="app">
       <Provider store={store}>
         <Theme.Provider value={{ current: theme, update: setTheme }}>
-          <Header />
-          <Router>
-            <Switch>
-              <Route path="/" exact>
-                {!signedIn && <Login />}
-                {signedIn && (
-                  <Redirect
-                    to={{
-                      pathname: '/notes',
-                    }}
-                  />
-                )}
-              </Route>
-              <Route path="/register">
-                <Register />
-              </Route>
-              <PrivateRoute path="/notes">
-                <NotesView />
-              </PrivateRoute>
-              <PrivateRoute path="/add-note">
-                <AddNotes />
-              </PrivateRoute>
-              <PrivateRoute path="/detail-note">
-                <DetailNote />
-              </PrivateRoute>
-              <Route path="*">
-                <div>Ruta no encontrada</div>
-                <a href="/">Volver a home</a>
-              </Route>
-            </Switch>
-          </Router>
+          <User.Provider value={{ signedIn: signedIn, updateUser: setUser }}>
+            <Header />
+            <Router>
+              <Switch>
+                <Route path="/" exact>
+                  {!signedIn && <Login />}
+                  {signedIn && (
+                    <Redirect
+                      to={{
+                        pathname: '/notes',
+                      }}
+                    />
+                  )}
+                </Route>
+                <Route path="/register">
+                  <Register />
+                </Route>
+                <PrivateRoute path="/notes">
+                  <NotesView />
+                </PrivateRoute>
+                <PrivateRoute path="/add-note">
+                  <AddNotes />
+                </PrivateRoute>
+                <PrivateRoute path="/detail-note">
+                  <DetailNote />
+                </PrivateRoute>
+                <Route path="*">
+                  <div>Ruta no encontrada</div>
+                  <a href="/">Volver a home</a>
+                </Route>
+              </Switch>
+            </Router>
+          </User.Provider>
         </Theme.Provider>
       </Provider>
     </div>

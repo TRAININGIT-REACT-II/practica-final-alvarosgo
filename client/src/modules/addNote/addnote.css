@@ -2,14 +2,11 @@
     display: flex;
     flex: 1;
     justify-content: center;
-    margin-top: 10%;
 }
 
-
 .add_note {
-    background-color: black;
-    width: 30%;
-    padding: 2%;
+    width: 100%;
+    padding: 5%;
 }
 
 .add_note_button {

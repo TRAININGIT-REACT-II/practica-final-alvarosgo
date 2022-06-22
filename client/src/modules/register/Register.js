@@ -6,7 +6,9 @@ import './register.css';
 
 const Register = () => {
 
-    const [formState, setFormState] = useState({ username: "", password: "" });
+    const [formState, setFormState] = useState({ username: "", password: "", passwordRepeated: "" });
+
+    const [error, setError] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -19,7 +21,25 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(register(formState))
+
+        let formError = false;
+
+        if (formState.password !== formState.passwordRepeated) {
+            setError(true)
+            formError = true;
+        } else {
+            setError(false)
+            formError = false;
+        }
+
+        if (!formError) {
+            const formToSend = {
+                username: formState.username,
+                password: formState.password
+            }
+
+            dispatch(register(formToSend))
+        }
     }
 
     return (
@@ -36,8 +56,9 @@ const Register = () => {
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1"><BsKey /></span>
-                    <input id="password" type="password" className="form-control" placeholder="Repita contraseña" value={formState.password} />
+                    <input id="password" type="password" className="form-control" placeholder="Repita contraseña" value={formState.passwordRepeated} onChange={onChange("passwordRepeated")} />
                 </div>
+                {error && <p className='error'>Las contraseñas no son iguales</p>}
                 <button className="btn btn-primary login_button">Registrarse</button>
             </form>
         </div>

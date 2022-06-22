@@ -2,17 +2,23 @@
     display: flex;
     flex: 1;
     justify-content: center;
-    margin-top: 10%;
 }
 
 .detail_note {
-    background-color: black;
-    width: 30%;
-    padding: 2%;
+    width: 120%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+.edit_button {
+    margin-bottom: 5%;
 }
 
 .detail_note_button {
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .detail_title {
