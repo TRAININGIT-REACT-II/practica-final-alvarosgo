@@ -11,7 +11,7 @@ export const register = (credentials) => {
             type: REGISTER_USER_REQUEST
         });
 
-        fetch('/api/register', {
+        fetch(API_URL + '/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(

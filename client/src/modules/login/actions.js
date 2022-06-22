@@ -10,7 +10,7 @@ export const login = (credentials) => {
             type: LOGIN_USER_REQUEST
         });
 
-        fetch('/api/login', {
+        fetch(API_URL + '/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(
