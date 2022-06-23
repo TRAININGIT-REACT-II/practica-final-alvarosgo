@@ -1,3 +1,20 @@
+.notes_general {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    padding: 25px;
+}
+
+.add_note_button {
+    margin-bottom: 2%;
+    width: 40%;
+}
+
 .cardNote {
-    width: 30%;
+    width: 60%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 2%;
 }

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { BsPencilFill } from "react-icons/bs";
+import DeleteModal from '../../components/DeleteModal';
 import './detailnote.css';
 
 
 const DetailNote = () => {
 
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [formState, setFormState] = useState({ title: "", content: "" });
     const [edit, setEdit] = useState(false);
 
@@ -18,12 +20,13 @@ const DetailNote = () => {
     const onSubmit = (e) => {
         console.log(formState.title)
         console.log(formState.content)
+        setEdit(false)
         e.preventDefault();
     }
 
     return (
         <div className='detail_note_general'>
-            <form className="login_form" onSubmit={onSubmit}>
+            <form className="detail_edit_form" onSubmit={onSubmit}>
                 <div className="card detail_note">
                     <BsPencilFill className='edit_button' disabled={!edit} onClick={() => {
                         if (!edit) {
@@ -37,7 +40,13 @@ const DetailNote = () => {
                         <textarea className="form-control card-text" placeholder="Agrega contenido a tu nota" id="content" disabled={!edit} value={formState.content} onChange={onChange("content")}> </textarea>
                         <label for="content">Contenido</label>
                     </div>
-                    {edit && <button type="submit" className="btn btn-outline-primary detail_note_button" >Guardar nota</button>}
+                    <div className="d-grid gap-2 col-6 mx-auto">
+                        <button type="submit" className="btn btn-success detail_note_button" disabled={!edit} >Guardar nota</button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={() => setShowDeleteModal(true)}>
+                            Eliminar nota
+                        </button>
+                    </div>
+                    <DeleteModal show={showDeleteModal} onClose={() => setShowDeleteModal(false)} />
                 </div>
             </form>
         </div>

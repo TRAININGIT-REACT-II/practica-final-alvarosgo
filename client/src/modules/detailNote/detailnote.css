@@ -4,6 +4,15 @@
     justify-content: center;
 }
 
+.detail_edit_form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    width: 400px;
+    padding: 2%;
+}
+
 .detail_note {
     width: 120%;
     display: flex;
