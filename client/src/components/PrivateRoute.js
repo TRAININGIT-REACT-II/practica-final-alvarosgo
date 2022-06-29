@@ -16,7 +16,7 @@ const PrivateRoute = ({ children, ...others }) => {
                 ) : (
                     <Redirect
                         to={{
-                            pathname: "/",
+                            pathname: "/login",
                             state: { msg: "Debes iniciar sesión" },
                         }}
                     />

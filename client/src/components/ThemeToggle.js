@@ -14,9 +14,9 @@ const ThemeToggle = () => {
 
     return (
         <div className="form-check form-switch" aria-current={currentName}>
-            <label className="form-check-label" for="theme-toggle"><BsSun /></label>
+            <label className="form-check-label" htmlFor="theme-toggle"><BsSun /></label>
             <input id="theme-toggle" className="form-check-input" type="checkbox" onChange={onChange} />
-            <label className="form-check-label" for="theme-toggle"><BsMoon /></label>
+            <label className="form-check-label" htmlFor="theme-toggle"><BsMoon /></label>
         </div>)
 };
 

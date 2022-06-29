@@ -12,6 +12,7 @@ import configureAppStore from "./redux/store";
 import User from "./contexts/user";
 import AddNotes from "./modules/addNote/addNote";
 import DetailNote from "./modules/detailNote/DetailNote";
+import Home from "./modules/home/Home";
 
 // Componente principal de la aplicación.
 const App = () => {
@@ -19,8 +20,6 @@ const App = () => {
   const [loading, setLoading] = useState(true);
 
   const [signedIn, setUser] = useState(false);
-
-  console.log(signedIn)
 
   // Estado del tema 
   const [theme, setTheme] = useState(THEMES.light)
@@ -56,6 +55,9 @@ const App = () => {
             <Router>
               <Switch>
                 <Route path="/" exact>
+                  <Home></Home>
+                </Route>
+                <Route path="/login" exact>
                   {!signedIn && <Login />}
                   {signedIn && (
                     <Redirect
@@ -79,7 +81,7 @@ const App = () => {
                 </PrivateRoute>
                 <Route path="*">
                   <div>Ruta no encontrada</div>
-                  <a href="/">Volver a home</a>
+                  <a href="/login">Volver a home</a>
                 </Route>
               </Switch>
             </Router>

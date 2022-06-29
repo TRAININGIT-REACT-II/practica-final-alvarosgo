@@ -22,7 +22,8 @@ const login = (state = initialState, action) => {
                 ...state,
                 username: action.resp?.username || null,
                 userId: action.resp?.id || null,
-                token: action.resp?.token || null
+                token: action.resp?.token || null,
+                error: null
             };
         case LOGIN_USER_RESPONSE_ERROR:
             return {

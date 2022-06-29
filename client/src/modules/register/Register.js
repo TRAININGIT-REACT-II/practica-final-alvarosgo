@@ -4,7 +4,7 @@ import { register } from './actions';
 import { BsFillKeyFill, BsFillPersonPlusFill, BsKey } from "react-icons/bs";
 import './register.css';
 import userHook from '../../hooks/userHook';
-import { getRegisterState, getUsername } from './selector';
+import { getRegisterState } from './selector';
 
 const Register = () => {
 
@@ -15,11 +15,19 @@ const Register = () => {
     const [passwordRepeated, setPasswordRepeted] = useState("")
     const [error, setError] = useState(false);
 
+    // Estado para controlar el error que nos devuelve el API
+    const [errorEnRegistro, setErrorEnRegistro] = useState(false);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(registerState)
-    })
+        if (registerState.userId !== -1 && registerState.error === null) {
+            window.location = '/login'
+        } else if (registerState.userId === -1 && registerState.error !== null) {
+            setErrorEnRegistro(true)
+        }
+
+    }, [registerState])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -41,10 +49,6 @@ const Register = () => {
             }
 
             dispatch(register(formToSend))
-        }
-
-        if (registerState.error === null) {
-            console.log('NO HAY ERROR')
         }
 
     }
@@ -70,6 +74,7 @@ const Register = () => {
                     <input id="password" type="password" className="form-control" placeholder="Repita contraseña" value={passwordRepeated} onChange={onChangePasswordRepeated} />
                 </div>
                 {error && <p className='error'>Las contraseñas no coinciden</p>}
+                {errorEnRegistro && <p className='error'>{registerState.error}</p>}
                 <button className="btn btn-primary login_button">Registrarse</button>
             </form>
         </div>

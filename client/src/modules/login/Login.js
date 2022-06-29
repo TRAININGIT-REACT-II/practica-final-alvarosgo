@@ -1,18 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from "react-router";
 import { THEMES } from '../../constants/themes';
 import Theme from '../../contexts/theme';
 import { login } from './actions';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsFillKeyFill, BsFillPersonFill } from "react-icons/bs";
 import './login.css';
 import User from '../../contexts/user';
 import userHook from '../../hooks/userHook';
+import { getLoginState } from './selector';
 
 const Login = () => {
 
+    // Selectors
+    const loginState = useSelector((state) => getLoginState(state))
+
     // Estados
     const usersForm = userHook();
+    const [errorEnLogin, setErrorEnLogin] = useState(false);
 
     const { state } = useLocation();
 
@@ -26,9 +31,17 @@ const Login = () => {
 
     const showError = state && state.msg != null && !signedIn;
 
+    useEffect(() => {
+        if (loginState.userId !== -1 && loginState.error === null) {
+            updateUser(true)
+        } else if (loginState.userId === -1 && loginState.error !== null) {
+            setErrorEnLogin(true)
+        }
+
+    }, [loginState])
+
     const onSubmit = (e) => {
         e.preventDefault();
-        updateUser(true)
         console.log('EN EL SUBMIT')
         console.log(signedIn)
         dispatch(login(usersForm.value))
@@ -45,9 +58,10 @@ const Login = () => {
                     <span className="input-group-text" id="basic-addon1"><BsFillKeyFill></BsFillKeyFill></span>
                     <input id="password" type="password" className="form-control" placeholder="Contraseña" value={usersForm.value.password} onChange={usersForm.onChangeForm("password")} />
                 </div>
+                {showError && (<div className='login_error'><p>{state.msg}</p></div>)}
+                {errorEnLogin && <div className='login_error'><p>{loginState.error}</p></div>}
                 <button className="btn btn-primary login_button" >Iniciar sesión</button>
                 <p>¿Todavía no estás registrado? <a href="/register">Regístrate aquí</a> </p>
-                {showError && (<div className='login_error'><p>{state.msg}</p></div>)}
             </form>
         </div>
     );
