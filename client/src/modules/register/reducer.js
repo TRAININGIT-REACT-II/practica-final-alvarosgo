@@ -19,7 +19,6 @@ const register = (state = initialState, action) => {
                 ...state
             }
         case REGISTER_USER_RESPONSE:
-            //localStorage.setItem(TOKEN, action.resp?.token || null)
             return {
                 ...state,
                 username: action.resp?.username || null,

@@ -15,7 +15,7 @@ const Header = (props) => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     {/* <ThemeToggle /> */}
-                    {userInfo && <button type="button" class="btn btn-danger" onClick={() => {
+                    {userInfo && <button type="button" className="btn btn-danger" onClick={() => {
                         localStorage.removeItem(USER_INFO);
                         localStorage.removeItem(TOKEN);
 
