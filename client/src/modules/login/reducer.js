@@ -1,3 +1,4 @@
+import { getUserInfo } from '../../utils/ApplicationUtils';
 import {
     LOGIN_USER_REQUEST,
     LOGIN_USER_RESPONSE,
@@ -5,9 +6,7 @@ import {
 } from './actions';
 
 const initialState = {
-    username: "",
-    userId: -1,
-    token: "",
+    userInfo: getUserInfo(),
     error: null
 };
 
@@ -20,9 +19,7 @@ const login = (state = initialState, action) => {
         case LOGIN_USER_RESPONSE:
             return {
                 ...state,
-                username: action.resp?.username || null,
-                userId: action.resp?.id || null,
-                token: action.resp?.token || null,
+                userInfo: action.resp,
                 error: null
             };
         case LOGIN_USER_RESPONSE_ERROR:

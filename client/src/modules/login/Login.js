@@ -6,7 +6,6 @@ import { login } from './actions';
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillKeyFill, BsFillPersonFill } from "react-icons/bs";
 import './login.css';
-import User from '../../contexts/user';
 import userHook from '../../hooks/userHook';
 import { getLoginState } from './selector';
 
@@ -23,18 +22,18 @@ const Login = () => {
 
     // Contextos
     const theme = useContext(Theme);
-    const { signedIn, updateUser } = useContext(User);
 
     const dispatch = useDispatch();
 
     const loginCssClass = theme.current === THEMES.light ? "login" : "login login_dark";
 
-    const showError = state && state.msg != null && !signedIn;
+    const showError = state && state.msg != null && !loginState.userInfo;
 
     useEffect(() => {
-        if (loginState.userId !== -1 && loginState.error === null) {
-            updateUser(true)
-        } else if (loginState.userId === -1 && loginState.error !== null) {
+        console.log(loginState)
+        if (loginState.userInfo === null && loginState.error !== null) {
+            setErrorEnLogin(true)
+        } else if (loginState.userInfo !== null && loginState.userInfo?.userId === -1 && loginState.error !== null) {
             setErrorEnLogin(true)
         }
 
@@ -42,8 +41,6 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log('EN EL SUBMIT')
-        console.log(signedIn)
         dispatch(login(usersForm.value))
     }
 

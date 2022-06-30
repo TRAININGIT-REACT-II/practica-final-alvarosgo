@@ -1,6 +1,7 @@
 export const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 export const LOGIN_USER_RESPONSE = 'LOGIN_USER_RESPONSE';
 export const LOGIN_USER_RESPONSE_ERROR = 'LOGIN_USER_RESPONSE_ERROR';
+export const USER_INFO = 'USER_INFO';
 export const TOKEN = 'TOKEN';
 
 export const login = (credentials) => {
@@ -30,6 +31,7 @@ export const login = (credentials) => {
                 } else {
                     console.log('NO error')
                     console.log(resp)
+                    localStorage.setItem(USER_INFO, JSON.stringify(resp))
                     localStorage.setItem(TOKEN, resp?.token || null)
                     dispatch({
                         type: LOGIN_USER_RESPONSE,

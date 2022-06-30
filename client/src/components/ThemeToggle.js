@@ -6,6 +6,7 @@ import { BsSun, BsMoon } from "react-icons/bs";
 // Toggle para cambiar el tema actual
 const ThemeToggle = () => {
     const theme = useContext(Theme);
+
     const currentName = theme.current === THEMES.light ? "Tema claro" : "Tema oscuro";
 
     const onChange = () => {

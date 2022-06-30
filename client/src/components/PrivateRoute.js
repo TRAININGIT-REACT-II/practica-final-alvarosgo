@@ -1,17 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
-import User from "../contexts/user";
+import { getLoginState } from "../modules/login/selector";
 
 const PrivateRoute = ({ children, ...others }) => {
 
-    // const { signedIn } = useContext(User);
+    const loginState = useSelector((state) => getLoginState(state))
+
+    const userIsLogged = loginState.userInfo !== null;
 
     return (
         <Route
             {...others}
             render={() =>
-                //signedIn ? ( HASTA QUE LO HAGAMOS CON EL API )
-                true ? (
+                userIsLogged ? (
                     children
                 ) : (
                     <Redirect
