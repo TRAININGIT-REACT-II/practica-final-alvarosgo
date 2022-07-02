@@ -8,53 +8,37 @@ const NotesView = () => {
 
     const [empty, setEmpty] = useState(true)
 
+    const [loaded, setLoaded] = useState(false)
+
     const notesState = useSelector((state) => getNotesState(state))
 
-    const notesList = []
+    let notesList = []
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getNotes())
-
-        if (notesState.notesList.length === 0) {
-            setEmpty(true)
-        } else {
+        if (notesState.notesList.length !== 0) {
             setEmpty(false)
-            notesList = notesState.notesList
         }
+        if (empty) {
+            dispatch(getNotes())
+        }
+        console.log('En el use effect')
+        console.log(notesState.notesList)
 
-    }, notesState)
-
-    /*const note1 = {
-        title: "Titulo1",
-        content: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    }
-    const note2 = {
-        title: "Titulo2",
-        content: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    }
-    const note3 = {
-        title: "Titulo3",
-        content: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    }
-    const note4 = {
-        title: "Titulo4",
-        content: "Some quick example text to build on the card title and make up the bulk of the card's content."
-    }
-
-    notesList.push(note1)
-    notesList.push(note2)
-    notesList.push(note3)
-    notesList.push(note4) */
+    }, [notesState.notesList, empty])
 
     return (
         <div className="notes_general">
             <button type="button" className="btn btn-info add_note_button" onClick={() => window.location = '/add-note'}>Crear nueva nota</button>
-            {!empty ? notesList.map((note) => <div className="card cardNote" onClick={() => window.location = '/detail-note'} >
+            {/* {!empty ? notesList.map((note, i) => <div key={i} className="card cardNote" onClick={() => window.location = '/detail-note'} >
                 <h5 className="card-title">{note.title}</h5>
                 <p className="card-text">{note.content}</p>
-            </div>) : <div><p>Lista vacía</p></div>}
+            </div>) : <div><p>Lista vacía</p></div>} */}
+            {notesState.notesList.map((note, i) => <div key={i} className="card cardNote" onClick={() => window.location = '/detail-note'} >
+                <h5 className="card-title">{note.title}</h5>
+                <p className="card-text">{note.content}</p>
+            </div>)}
         </div>
     );
 }

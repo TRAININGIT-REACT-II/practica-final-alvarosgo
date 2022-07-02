@@ -8,7 +8,6 @@ const initialState = {
 }
 
 const notes = (state = initialState, action) => {
-
     switch (action.type) {
         case GET_NOTES_REQUEST:
             return {

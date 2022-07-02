@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNote } from './actions';
 import './addnote.css';
+import { getAddNoteState } from './selector';
 
 const AddNotes = () => {
 
     const [formStateAdd, setFormStateAdd] = useState({ title: "", content: "" });
+
+    const addNoteState = useSelector((state) => getAddNoteState(state))
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log(addNoteState)
+        if (addNoteState.title !== "") {
+            window.location = '/notes';
+        }
+
+    }, [addNoteState])
 
     const onChange = (key) => {
         return (e) => setFormStateAdd({
@@ -13,7 +28,10 @@ const AddNotes = () => {
     }
 
     const onSubmit = (e) => {
-        console.log(formStateAdd.title)
+        console.log('ON SUBMIT')
+        console.log(formStateAdd)
+
+        dispatch(addNote(formStateAdd))
         e.preventDefault();
     }
 
