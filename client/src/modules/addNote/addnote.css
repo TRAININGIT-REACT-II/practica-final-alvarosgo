@@ -22,3 +22,9 @@
     width: 400px;
     padding: 25px;
 }
+
+.divButton {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

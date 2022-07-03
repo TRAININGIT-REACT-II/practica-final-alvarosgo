@@ -9,7 +9,6 @@ import { getDetailNoteState } from './selector';
 
 const DetailNote = () => {
 
-    console.log(location.pathname.substring(13))
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [formState, setFormState] = useState({ title: "", content: "" });
     const [edit, setEdit] = useState(false);
@@ -42,7 +41,6 @@ const DetailNote = () => {
             window.location = '/notes';
         }
 
-        console.log(detailNote)
     }, [detailNote]);
 
     useEffect(() => {
@@ -97,7 +95,7 @@ const DetailNote = () => {
                         <textarea className="form-control card-text detail_content" placeholder="Agrega contenido a tu nota" id="content" disabled={!edit} value={formState.content} onChange={onChange("content")}> </textarea>
                         <label htmlFor="content">Contenido</label>
                     </div>
-                    <div className="d-grid gap-2 col-6 mx-auto">
+                    <div className="d-grid gap-2 col-6 mx-auto divButton">
                         <button type="submit" className="btn btn-success detail_note_button" disabled={!edit} >Guardar nota</button>
                         <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onClick={() => setShowDeleteModal(true)}>
                             Eliminar nota

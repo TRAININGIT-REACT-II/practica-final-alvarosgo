@@ -26,18 +26,12 @@ export const getNoteDetail = (id) => {
             }
         }).then(resp => resp.json())
             .then(resp => {
-                console.log('Response getNoteDetail')
-                console.log(resp)
-
                 if (resp.error) {
-                    console.log('ERROR')
                     dispatch({
                         type: NOTE_DETAIL_ERROR,
                         error: resp.error
                     });
                 } else {
-                    console.log('NO error')
-                    console.log(resp)
                     dispatch({
                         type: NOTE_DETAIL_RESPONSE,
                         resp
@@ -61,18 +55,12 @@ export const deleteNote = (id) => {
             }
         }).then(resp => resp.json())
             .then(resp => {
-                console.log('Response deleteNote')
-                console.log(resp)
-
                 if (resp.error) {
-                    console.log('ERROR')
                     dispatch({
                         type: DELETE_NOTE_ERROR,
                         error: resp.error
                     });
                 } else {
-                    console.log('NO error')
-                    console.log(resp)
                     dispatch({
                         type: DELETE_NOTE_RESPONSE,
                         resp
@@ -100,18 +88,12 @@ export const editNote = (id, note) => {
             )
         }).then(resp => resp.json())
             .then(resp => {
-                console.log('Response editNote')
-                console.log(resp)
-
                 if (resp.error) {
-                    console.log('ERROR')
                     dispatch({
                         type: EDIT_NOTE_ERROR,
                         error: resp.error
                     });
                 } else {
-                    console.log('NO error')
-                    console.log(resp)
                     dispatch({
                         type: EDIT_NOTE_RESPONSE,
                         resp

@@ -8,11 +8,7 @@ const NotesView = () => {
 
     const [empty, setEmpty] = useState(true)
 
-    const [loaded, setLoaded] = useState(false)
-
     const notesState = useSelector((state) => getNotesState(state))
-
-    let notesList = []
 
     const dispatch = useDispatch();
 
@@ -23,13 +19,9 @@ const NotesView = () => {
     }, [empty])
 
     useEffect(() => {
-        console.log(notesState.notesList)
         if (notesState.notesList.length !== 0) {
             setEmpty(false)
-            notesList.push(notesState.notesList)
         }
-        console.log('LA OTRA LISTA')
-        console.log(notesList)
     }, [notesState.notesList])
 
     return (

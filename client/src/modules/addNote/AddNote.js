@@ -42,7 +42,9 @@ const AddNotes = () => {
                         <textarea id="content" className="form-control card-text" placeholder="Agrega contenido a tu nota" value={formStateAdd.content} onChange={onChange("content")}> </textarea>
                         <label for="content">Contenido</label>
                     </div>
-                    <button type="submit" className="btn btn-warning add_note_button" >Añadir nota</button>
+                    <div className='divButton'>
+                        <button type="submit" className="btn btn-warning add_note_button" >Añadir nota</button>
+                    </div>
                 </div>
             </form>
         </div>

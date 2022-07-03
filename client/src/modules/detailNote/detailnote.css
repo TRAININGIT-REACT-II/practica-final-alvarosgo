@@ -2,6 +2,7 @@
     display: flex;
     flex: 1;
     justify-content: center;
+    height: fit-content;
 }
 
 .detail_edit_form {
@@ -15,10 +16,6 @@
 
 .detail_note {
     width: 120%;
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
     padding: 5%;
 }
 
@@ -39,4 +36,10 @@
 .detail_content {
     height: 150%;
     width: 200%;
+}
+
+.divButton {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
