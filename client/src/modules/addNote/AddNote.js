@@ -13,7 +13,6 @@ const AddNotes = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(addNoteState)
         if (addNoteState.title !== "") {
             window.location = '/notes';
         }
@@ -28,16 +27,13 @@ const AddNotes = () => {
     }
 
     const onSubmit = (e) => {
-        console.log('ON SUBMIT')
-        console.log(formStateAdd)
-
         dispatch(addNote(formStateAdd))
         e.preventDefault();
     }
 
     return (
         <div className='add_note_general'>
-            <form className="login_form" onSubmit={onSubmit}>
+            <form className="add_note_form" onSubmit={onSubmit}>
                 <div className="card add_note">
                     <div className="input-group mb-3">
                         <input id="title" type="text" className="form-control" placeholder="Título" value={formStateAdd.title} onChange={onChange("title")} />

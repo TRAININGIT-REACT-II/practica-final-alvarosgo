@@ -23,10 +23,7 @@ export const addNote = (note) => {
             )
         }).then(resp => resp.json())
             .then(resp => {
-                console.log(resp)
-
                 if (resp) {
-                    console.log('NO error')
                     dispatch({
                         type: ADD_NOTE_RESPONSE,
                         resp

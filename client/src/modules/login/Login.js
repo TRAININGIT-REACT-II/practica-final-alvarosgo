@@ -30,7 +30,6 @@ const Login = () => {
     const showError = state && state.msg != null && !loginState.userInfo;
 
     useEffect(() => {
-        console.log(loginState)
         if (loginState.userInfo === null && loginState.error !== null) {
             setErrorEnLogin(true)
         } else if (loginState.userInfo !== null && loginState.userInfo?.userId === -1 && loginState.error !== null) {

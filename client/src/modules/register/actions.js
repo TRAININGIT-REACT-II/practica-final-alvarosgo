@@ -19,17 +19,12 @@ export const register = (credentials) => {
             ),
         }).then(resp => resp.json())
             .then(resp => {
-
-                console.log(resp)
-
                 if (resp.error) {
-                    console.log('ERROR')
                     dispatch({
                         type: REGISTER_USER_RESPONSE_ERROR,
                         error: resp.error
                     });
                 } else {
-                    console.log('NO error')
                     dispatch({
                         type: REGISTER_USER_RESPONSE,
                         resp

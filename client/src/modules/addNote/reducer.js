@@ -6,7 +6,8 @@ import {
 const initialState = {
     title: "",
     content: "",
-    author: ""
+    author: "",
+    id: ""
 }
 
 const addNote = (state = initialState, action) => {
@@ -21,7 +22,8 @@ const addNote = (state = initialState, action) => {
                 ...state,
                 title: action.resp?.title || null,
                 content: action.resp?.content || null,
-                author: action.resp?.author || null
+                author: action.resp?.author || null,
+                id: action.resp?.id || null,
             }
         default:
             return state;

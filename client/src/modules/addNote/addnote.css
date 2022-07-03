@@ -13,3 +13,12 @@
 .add_note_button {
     margin-top: 2%;
 }
+
+.add_note_form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    width: 400px;
+    padding: 25px;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { THEMES } from "./constants/themes";
 import Theme from "./contexts/theme";
-import configureAppStore from "./redux/store";
+import store from "./redux/store";
 import ManageRoutes from "./components/ManageRoutes";
 
 // Componente principal de la aplicación.
@@ -12,8 +12,6 @@ const App = () => {
 
   // Estado del tema 
   const [theme, setTheme] = useState(THEMES.light)
-
-  const store = configureAppStore();
 
   // Cargamos el estado del servidor
   useEffect(() => {

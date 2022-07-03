@@ -2,9 +2,7 @@ import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom";
 import './deletemodal.css';
 
-const DeleteModal = ({ show, onClose }) => {
-
-    console.log(show)
+const DeleteModal = ({ show, onClose, onDelete }) => {
 
     const modalRef = useRef(null);
 
@@ -44,12 +42,12 @@ const DeleteModal = ({ show, onClose }) => {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" onClick={onClose} className="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" onClick={() => window.location = '/notes'} className="btn btn-primary">Aceptar</button>
+                                <button type="button" onClick={onDelete} className="btn btn-primary">Aceptar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-backdrop fade show"></div>
+                <div className="modal-backdrop fade show"></div>
             </div>
             , modalRef.current
         );

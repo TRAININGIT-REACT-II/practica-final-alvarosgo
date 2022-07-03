@@ -17,28 +17,28 @@ const NotesView = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (notesState.notesList.length !== 0) {
-            setEmpty(false)
-        }
         if (empty) {
             dispatch(getNotes())
         }
-        console.log('En el use effect')
-        console.log(notesState.notesList)
+    }, [empty])
 
-    }, [notesState.notesList, empty])
+    useEffect(() => {
+        console.log(notesState.notesList)
+        if (notesState.notesList.length !== 0) {
+            setEmpty(false)
+            notesList.push(notesState.notesList)
+        }
+        console.log('LA OTRA LISTA')
+        console.log(notesList)
+    }, [notesState.notesList])
 
     return (
         <div className="notes_general">
             <button type="button" className="btn btn-info add_note_button" onClick={() => window.location = '/add-note'}>Crear nueva nota</button>
-            {/* {!empty ? notesList.map((note, i) => <div key={i} className="card cardNote" onClick={() => window.location = '/detail-note'} >
+            {!empty ? notesState.notesList.map((note, i) => <div key={i} className="card cardNote" onClick={() => window.location = '/detail-note/' + note.id} >
                 <h5 className="card-title">{note.title}</h5>
                 <p className="card-text">{note.content}</p>
-            </div>) : <div><p>Lista vacía</p></div>} */}
-            {notesState.notesList.map((note, i) => <div key={i} className="card cardNote" onClick={() => window.location = '/detail-note'} >
-                <h5 className="card-title">{note.title}</h5>
-                <p className="card-text">{note.content}</p>
-            </div>)}
+            </div>) : <div><p>Todavía no se han añadido notas</p></div>}
         </div>
     );
 }

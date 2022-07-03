@@ -42,7 +42,7 @@ const ManageRoutes = () => {
                     <PrivateRoute path="/add-note">
                         <AddNotes />
                     </PrivateRoute>
-                    <PrivateRoute path="/detail-note">
+                    <PrivateRoute path="/detail-note/:id">
                         <DetailNote />
                     </PrivateRoute>
                     <Route path="*">
